@@ -5,18 +5,35 @@ Welcome to the Car Image Classification project! This initiative aims to develop
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Dataset](#dataset)
-3. [Model Architecture](#model-architecture)
-4. [Training](#training)
-5. [Evaluation](#evaluation)
-6. [Web App](#web-app)
-7. [Future Work](#future-work)
-8. [Full Report](#full-report)
-9. [License](#license)
+2. [Files](#files)
+3. [Dataset](#dataset)
+4. [Model Architecture](#model-architecture)
+5. [Training](#training)
+6. [Evaluation](#evaluation)
+7. [Web App](#web-app)
+8. [Future Work](#future-work)
+9. [Full Report](#full-report)
+10. [License](#license)
 
 ## Introduction
 
 In the rapidly evolving automotive industry of 2023, staying up-to-date with the latest car models is crucial for various applications, from market analysis to autonomous driving. This project addresses the need for an accurate and efficient image classification system specifically designed for identifying cars from this year. To make the model accessible, we've developed a user-friendly Flask web application that allows users to classify 2023 car models effortlessly.
+
+## Files
+| FILES | DESCRIPTION |
+| ---   | ---         |
+| `scrape.py` |  Contains functions for web scraping car images and specs | 
+| `data_extractor.py` | Turns all URLs in the input `df` to labeled pictures and cleans and daves car specs into a csv file |
+| `img_preprocessing.py` | Filter out the interior car images using a trained NN model and splits the data into training and testing sets| 
+| `crop.py` | Implements image cropping functionality|
+| `load_data.py` | Loads train and test data using Torch DataLoader| 
+| `seed_everything.py` | Seeds all random number generators for reproducibility| 
+| `transform_image.py` | Transforms the input image for use in Torchvision model| 
+| `interior_classifier.py` | Handles classification of interior images using a helper NN model|
+| `classifier.py` |  Contains the `ResNet50` and `ResNet101` models with initialized weights|
+| `model_trainer.py` | A class used for training and managing ResNet models for the car dataset| 
+| `main.py` | The main file for training the car classifier model| 
+| `app.py` | Implements the `Flask` web application where users can upload car images for classification| 
 
 ## Dataset
 
@@ -38,16 +55,14 @@ To enhance the model's performance, we developed a car exterior detection algori
 
 Monitoring the training process involves tracking accuracy, while the evaluation process goes beyond with the inclusion of confusion matrices and ROC AUC scores. These metrics provide a comprehensive understanding of the model's quality, ensuring its reliability in diverse scenarios.
 
-<div align="center">
+<p align="center">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/accuracy.jpg">
+</p>
+
 | Metric             | Score  |
 |--------------------|--------|
 | Train Accuracy     | 97.2%  |
 | Test Accuracy      | 71.2%  |
-</div>
-
-<p align="center">
-  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/accuracy.jpg">
-</p>
 
 ## Web App
 
