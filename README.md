@@ -9,9 +9,9 @@ Welcome to the Car Image Classification project! This initiative aims to develop
 3. [Model Architecture](#model-architecture)
 4. [Training](#training)
 5. [Evaluation](#evaluation)
-6. [Usage](#usage)
-7. [Future Improvements](#future-improvements)
-8. [Contributing](#contributing)
+6. [Web App](#web-app)
+7. [Future Work](#future-work)
+8. [Full Report](#full-report)
 9. [License](#license)
 
 ## Introduction
@@ -25,6 +25,10 @@ The dataset used for this project is extensive, comprising over 200,000 images s
 ## Model Architecture
 
 We have employed two powerful pre-trained models, ResNet-50 and ResNet-101, for fine-tuning the image classification task. These architectures are renowned for their deep learning capabilities and are well-suited for our project's requirements.
+<p align="center">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/ResNet50_arc.png">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/resnet_size.png">
+</p>
 
 ## Training
 
@@ -34,11 +38,23 @@ To enhance the model's performance, we developed a car exterior detection algori
 
 Monitoring the training process involves tracking accuracy, while the evaluation process goes beyond with the inclusion of confusion matrices and ROC AUC scores. These metrics provide a comprehensive understanding of the model's quality, ensuring its reliability in diverse scenarios.
 
+<div align="center">
+| Metric             | Score  |
+|--------------------|--------|
+| Train Accuracy     | 97.2%  |
+| Test Accuracy      | 71.2%  |
+</div>
 
+<p align="center">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/accuracy.jpg">
+</p>
 
-## Usage
+## Web App
 
 To make the model accessible to users, we've created a Flask web application. This user-friendly interface allows anyone to upload an image of a 2023 car model and receive an accurate classification.
+<p align="center">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/webapp.jpg">
+</p>
 
 ## Future Work
 
