@@ -38,6 +38,9 @@ In the rapidly evolving automotive industry of 2023, staying up-to-date with the
 ## Dataset
 
 The dataset used for this project is extensive, comprising over 200,000 images scraped from the internet. These images cover car models ranging from 2011 to 2024, totaling more than 1,900 different car models. The dataset includes both interior and exterior photos, and during preprocessing, we filter and retain only the exterior images. For this project, we focus on 175 car classes for the year 2023.
+Exterior Picture Example             |  Interior Picture Example
+:-------------------------:|:-------------------------:
+ <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Tesla%20Model%20S_85.jpg"> |  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Tesla%20Model%20S_82.jpg">
 
 ## Model Architecture
 
@@ -63,6 +66,10 @@ Monitoring the training process involves tracking accuracy, while the evaluation
 |--------------------|--------|
 | Train Accuracy     | 97.2%  |
 | Test Accuracy      | 71.2%  |
+
+2023 Audi A3             |  2023 Toyota Corolla
+:-------------------------:|:-------------------------:
+ <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Audi%20A3.png"> |  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Toyota%20Corolla.png">
 
 ## Web App
 
