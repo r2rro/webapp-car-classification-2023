@@ -1,0 +1,109 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Model Classifier</title>
+    <!-- Bootswatch Darkly CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            color: #ffffff; 
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #61dafb; 
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .custom-file-input:lang(en)~.custom-file-label::after {
+            content: "Choose File";
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #343a40;
+            color: #61dafb; 
+        }
+
+        tr:hover {
+            background-color: #495057; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Model Classifier</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="file" accept=".jpg, .jpeg, .png" required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Predict</button>
+        </form>
+        {% if message %}
+            <div class="alert alert-success" role="alert">
+                <strong>Prediction:</strong> {{ message }}
+            </div>
+        {% endif %}
+            <div class="alert alert-info" role="alert">
+                <strong>Specifications:</strong>
+                <br />
+                {% if specs is string %}
+                <p>{{ specs }}</p>
+                {% else %}
+                <table>
+                    <tr>
+                        <th>{{ message }}</th>
+                        <th></th>
+                    </tr>
+                    
+                    {% for key, value in specs.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        
+        {% if image_path %}
+        <div class="alert alert-info" role="alert">
+            <strong>Uploaded Image:<strong>
+            <img src="{{ image_path }}">
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
