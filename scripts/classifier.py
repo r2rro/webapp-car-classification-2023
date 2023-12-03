@@ -11,14 +11,11 @@ class ResNet50(nn.Module):
       backbone = resnet50(weights=ResNet50_Weights.DEFAULT)
       _res_layers = list(backbone.children())[:-1]
       self.feature_extractor = nn.Sequential(*_res_layers)
-      self.fc = nn.Sequential(nn.Linear(2048, num_target_classes),
-                              #nn.Linear(hidden_1, hidden_2),
-                              #nn.Linear(hidden_2, num_target_classes)
-                             )
+      self.fc = nn.Sequential(nn.Linear(2048, num_target_classes))
 
     def forward (self, x):
       x = self.feature_extractor(x)
-      x = x.squeeze(-1).squeeze(-1) # check this
+      x = x.squeeze(-1).squeeze(-1) 
       x = self.fc(x)
       return x
     
@@ -31,13 +28,10 @@ class ResNet101(nn.Module):
       backbone = resnet101(weights=ResNet101_Weights.DEFAULT)
       _res_layers = list(backbone.children())[:-1]
       self.feature_extractor = nn.Sequential(*_res_layers)
-      self.fc = nn.Sequential(nn.Linear(2048, num_target_classes),
-                              #nn.Linear(hidden_1, hidden_2),
-                              #nn.Linear(hidden_2, num_target_classes)
-                             )
+      self.fc = nn.Sequential(nn.Linear(2048, num_target_classes))
 
     def forward (self, x):
       x = self.feature_extractor(x)
-      x = x.squeeze(-1).squeeze(-1) # check this
+      x = x.squeeze(-1).squeeze(-1)
       x = self.fc(x)
       return x
