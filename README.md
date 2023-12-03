@@ -80,7 +80,7 @@ To make the model more accessible to users, I have also created a Flask web appl
 
 ## Future Work
 
-Looking ahead, I plan to enhance the performance of the model using two methods:
+Looking ahead, I plan to enhance the performance of the model using three methods:
 1. More Data: Increasing the size of the dataset with more image variations helps the model generalize better to different instances of the same class.
 2. Hierarchical labeling: Organizing the classes into a hierarchical structure. Each class in the hierarchy represents a more specific subset of a more general class. For example, a general class of car make with subclasses of car models.
 3. Model Ensembling: Implementing soft voting by combining predictions from multiple models can enhance the overall accuracy and robustness of the classification system.
