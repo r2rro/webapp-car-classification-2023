@@ -1,30 +1,28 @@
-# Car Image Classification Project
+# 2023 Car Image Classification Project
 
-Welcome to the Car Image Classification project! This initiative aims to develop a robust image classification model specifically tailored for the year 2023 cars. As technology advances, so does the design, features, and overall appearance of vehicles. This project focuses on leveraging cutting-edge image classification techniques to accurately identify and categorize images of the latest car models.
+In this projects, I have scraped more than 200,000 car images for +19,000 car models from the year 2011 to 2024 including their full specifications. Based on this dataset, I have developed an image classification model based on PyTorch framework specifically tailored for the 2023 car models. I have also developed a web application using Flask framework where users can upload their 2023 car images to recieve their full specification and estimated price.
+
+<p align="center">
+  <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/Introduction.png">
+</p>
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Files](#files)
-3. [Dataset](#dataset)
-4. [Model Architecture](#model-architecture)
-5. [Training](#training)
-6. [Evaluation](#evaluation)
-7. [Web App](#web-app)
-8. [Future Work](#future-work)
-9. [Full Report](#full-report)
-10. [License](#license)
-
-## Introduction
-
-In the rapidly evolving automotive industry of 2023, staying up-to-date with the latest car models is crucial for various applications, from market analysis to autonomous driving. This project addresses the need for an accurate and efficient image classification system specifically designed for identifying cars from this year. To make the model accessible, we've developed a user-friendly Flask web application that allows users to classify 2023 car models effortlessly.
+1. [Files](#files)
+2. [Dataset](#dataset)
+3. [Model Architecture](#model-architecture)
+4. [Training](#training)
+5. [Evaluation](#evaluation)
+6. [Web App](#web-app)
+7. [Future Work](#future-work)
+8. [Full Report](#full-report)
 
 ## Files
 | FILES | DESCRIPTION |
 | ---   | ---         |
 | `scrape.py` |  Contains functions for web scraping car images and specs | 
-| `data_extractor.py` | Turns all URLs in the input `df` to labeled pictures and cleans and daves car specs into a csv file |
-| `img_preprocessing.py` | Filter out the interior car images using a trained NN model and splits the data into training and testing sets| 
+| `data_extractor.py` | Turns all URLs in the input `df` to labeled pictures and cleans and saves car specs into a csv file |
+| `img_preprocessing.py` | Filters out the interior car images using a trained NN model and splits the data into training and testing sets| 
 | `crop.py` | Implements image cropping functionality|
 | `load_data.py` | Loads train and test data using Torch DataLoader| 
 | `seed_everything.py` | Seeds all random number generators for reproducibility| 
@@ -37,14 +35,14 @@ In the rapidly evolving automotive industry of 2023, staying up-to-date with the
 
 ## Dataset
 
-The dataset used for this project is extensive, comprising over 200,000 images scraped from the internet. These images cover car models ranging from 2011 to 2024, totaling more than 1,900 different car models. The dataset includes both interior and exterior photos, and during preprocessing, we filter and retain only the exterior images. For this project, we focus on 175 car classes for the year 2023.
-Exterior Picture Example             |  Interior Picture Example
+The dataset scraped for this project is extensive, comprising over 200,000 images scraped from the internet. These images cover car models ranging from 2011 to 2024, totaling more than 1,900 different car models. The dataset includes both interior and exterior photos. For this project, the focus is on the 175 car classes for the year 2023.
+Exterior Image Example             |  Interior Image Example
 :-------------------------:|:-------------------------:
  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Tesla%20Model%20S_85.jpg"> |  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Tesla%20Model%20S_82.jpg">
 
 ## Model Architecture
 
-We have employed two powerful pre-trained models, ResNet-50 and ResNet-101, for fine-tuning the image classification task. These architectures are renowned for their deep learning capabilities and are well-suited for our project's requirements.
+I have employed two powerful pre-trained models, ResNet-50 and ResNet-101, to fine-tuning with the image classification task. These architectures are renowned for their deep learning capabilities and are well-suited for this project's requirements.
 <p align="center">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/ResNet50_arc.png">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/resnet_size.png">
@@ -52,11 +50,11 @@ We have employed two powerful pre-trained models, ResNet-50 and ResNet-101, for 
 
 ## Training
 
-To enhance the model's performance, we developed a car exterior detection algorithm. This algorithm identifies and excludes interior photos, ensuring that the model is trained specifically on exterior images. The training and test data are organized into folders to facilitate seamless integration with the torchvision library.
+To enhance the quality of the training data, I have developed a car exterior detection algorithm. This algorithm identifies and excludes interior photos, ensuring that the model is trained specifically on exterior images. To train the exterior detector model, a group of exterior and interior images are randomly selected from different car folders and manually labeled. The cleaned training and test data are then organized into folders to facilitate seamless integration with the torchvision library.
 
 ## Evaluation
 
-Monitoring the training process involves tracking accuracy, while the evaluation process goes beyond with the inclusion of confusion matrices and ROC AUC scores. These metrics provide a comprehensive understanding of the model's quality, ensuring its reliability in diverse scenarios.
+Monitoring the training process involves tracking accuracy, while the evaluation process goes beyond with the inclusion of confusion matrices and other evaluation metrics (see full report below for more details). These metrics provide a comprehensive understanding of the model's behavior in diverse scenarios.
 
 <p align="center">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/accuracy.jpg">
@@ -67,20 +65,25 @@ Monitoring the training process involves tracking accuracy, while the evaluation
 | Train Accuracy     | 97.2%  |
 | Test Accuracy      | 71.2%  |
 
-2023 Audi A3             |  2023 Toyota Corolla
+Studying the misclassified images provide more insight into the areas of improvment for this model. The example below shows that the model is able to detect important features of the car exterior, however, due to having a large number of classes and the similarities between different car bodies, the model can be misguided in the process. This opens up the opportunity to further enhance the accuracy of the model by different methods. See future work section for more detail. In addition, the confusion matrix shows that most misclassifications occur with adjacent classes i.e. similar models of the same make. 
+
+2023 Audi A3             |  Misclassified As 2023 Toyota Corolla
 :-------------------------:|:-------------------------:
  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Audi%20A3.png"> |  <img height="200" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/2023%20Toyota%20Corolla.png">
 
 ## Web App
 
-To make the model accessible to users, we've created a Flask web application. This user-friendly interface allows anyone to upload an image of a 2023 car model and receive an accurate classification.
+To make the model more accessible to users, I have also created a Flask web application. This user-friendly interface allows anyone to upload an image of a 2023 car model and receive a classification result along with the full specifications of the classified car.
 <p align="center">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/webapp.jpg">
 </p>
 
 ## Future Work
 
-Looking ahead, we plan to explore hierarchical modeling to address the challenge posed by a large number of classes. Additionally, we aim to implement soft voting by combining predictions from multiple models. This ensemble approach can enhance the overall accuracy and robustness of the classification system.
+Looking ahead, I plan to enhance the performance of the model using two methods:
+1. More Data: Increasing the size of the dataset with more image variations helps the model generalize better to different instances of the same class.
+2. Hierarchical labeling: Organizing the classes into a hierarchical structure. Each class in the hierarchy represents a more specific subset of a more general class. For example, a general class of car make with subclasses of car models.
+3. Model Ensembling: Implementing soft voting by combining predictions from multiple models can enhance the overall accuracy and robustness of the classification system.
 
 ## Full Report
 
@@ -264,14 +267,3 @@ Looking ahead, we plan to explore hierarchical modeling to address the challenge
 | 2023 Volvo XC60                    | 0.75      | 0.5    | 0.6      | 6.0     |
 | 2023 Volvo XC90                    | 0.833     | 0.625  | 0.714    | 8.0     |
 | accuracy                           | 0.71      | 0.71   | 0.71     | 0.71    |
-
-## License
-
-This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Important Images:**
-1. Example Exterior Car Image
-2. ResNet-50 Architecture
-3. Training Process Accuracy Plot
