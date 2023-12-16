@@ -62,8 +62,8 @@ Monitoring the training process involves tracking accuracy, while the evaluation
 
 | Metric             | Score  |
 |--------------------|--------|
-| Train Accuracy     | 97.2%  |
-| Test Accuracy      | 71.2%  |
+| Train Accuracy     | 97.3%  |
+| Test Accuracy      | 73.4%  |
 
 Studying the misclassified images provide more insight into the areas of improvment for this model. The example below shows that the model is able to detect important features of the car exterior, however, due to having a large number of classes and the similarities between different car bodies, the model can be misguided in the process. This opens up the opportunity to further enhance the accuracy of the model by different methods. See future work section for more detail. In addition, the confusion matrix shows that most misclassifications occur with adjacent classes i.e. similar models of the same make. 
 
