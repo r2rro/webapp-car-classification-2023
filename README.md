@@ -42,7 +42,7 @@ Exterior Image Example             |  Interior Image Example
 
 ## Model Architecture
 
-I have employed two powerful pre-trained models, ResNet-50 and ResNet-101, to fine-tuning with the image classification task. These architectures are renowned for their deep learning capabilities and are well-suited for this project's requirements.
+I have employed two powerful pre-trained models, [ResNet-50 and ResNet-101](https://arxiv.org/pdf/1512.03385.pdf), to fine-tuning with the image classification task. These architectures are renowned for their deep learning capabilities and are well-suited for this project's requirements.
 <p align="center">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/ResNet50_arc.png">
   <img width="600" src="https://github.com/r2rro/webapp-car-classification-2023/blob/main/image/resnet_size.png">
